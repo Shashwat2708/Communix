@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "610681735176",
+    "project_id": "communix-ae34a",
+    "storage_bucket": "communix-ae34a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610681735176:android:a920ac9d498fa1c0a2a9bd",
+        "android_client_info": {
+          "package_name": "com.example.communix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610681735176-222e200j37n8m65icl4o47h3d5nhn6k8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEKix1BH_gKwLEQfrSTu-GUXm4UP0lqRY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610681735176-222e200j37n8m65icl4o47h3d5nhn6k8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
