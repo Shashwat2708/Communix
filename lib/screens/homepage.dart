@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key});
+class HomePage extends StatefulWidget {
+  String gender;
+  String language;
+  String course;
+  String year;
+  HomePage(
+      {super.key,
+      required this.gender,
+      required this.language,
+      required this.course,
+      required this.year});
 
   @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  State<HomePage> createState() => _HomePageState();
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,24 +59,82 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(
-              Icons.chat,
-              color: Colors.white,
-              size: 150,
+          child: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  radius: 24,
+                  backgroundImage: AssetImage('assets/communix.png'),
+                ),
+                const SizedBox(
+                  width: 24,
+                ),
+                Text(
+                  widget.course,
+                  style: const TextStyle(color: Colors.white, fontSize: 24),
+                )
+              ],
             ),
-            SizedBox(
-              height: 30,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  radius: 24,
+                  backgroundImage: AssetImage('assets/1.png'),
+                ),
+                const SizedBox(
+                  width: 24,
+                ),
+                Text(
+                  widget.year,
+                  style: const TextStyle(color: Colors.white, fontSize: 24),
+                )
+              ],
             ),
-            Text(
-              'Chats and Groups',
-              style: TextStyle(fontSize: 24, color: Colors.white),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  radius: 24,
+                  backgroundImage: AssetImage('assets/2.png'),
+                ),
+                const SizedBox(
+                  width: 24,
+                ),
+                Text(
+                  widget.gender,
+                  style: const TextStyle(color: Colors.white, fontSize: 24),
+                )
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                const CircleAvatar(
+                  radius: 24,
+                  backgroundImage: AssetImage('assets/3.png'),
+                ),
+                const SizedBox(
+                  width: 24,
+                ),
+                Text(
+                  widget.language,
+                  style: const TextStyle(color: Colors.white, fontSize: 24),
+                )
+              ],
+            ),
+          )
+        ],
+      )),
     );
   }
 }

@@ -1,15 +1,24 @@
-import 'package:communix/screens/homepage.dart';
-import 'package:communix/utils/authmethods.dart';
+import 'package:communix/screens/configscreens/lang.dart';
+import 'package:communix/screens/auth/login.dart';
+import 'package:communix/services/authmethods.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterPagae extends StatefulWidget {
+  const RegisterPagae({super.key});
+
+  @override
+  State<RegisterPagae> createState() => _RegisterPagaeState();
+}
+
+class _RegisterPagaeState extends State<RegisterPagae> {
+  TextEditingController name = TextEditingController();
+
+  TextEditingController email = TextEditingController();
+  TextEditingController pass = TextEditingController();
+  String errorText = "";
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController email = TextEditingController();
-    TextEditingController pass = TextEditingController();
-
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -47,9 +56,10 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: name,
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: 'Email',
+                    labelText: 'Name',
                     labelStyle: const TextStyle(color: Colors.white),
                     focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white, width: 2),
@@ -63,6 +73,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: pass,
                   style: const TextStyle(color: Colors.white),
                   obscureText: true,
                   decoration: InputDecoration(
@@ -78,18 +89,41 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: email,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    labelStyle: const TextStyle(color: Colors.white),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white, width: 2),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide(
+                          color: Colors.white.withOpacity(0.5), width: 1),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  errorText,
+                  style: const TextStyle(color: Colors.red, fontSize: 18),
+                ),
                 const SizedBox(height: 40),
                 SizedBox(
                   width: 150,
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      //createAccount(email.text, pass.text).then((value) {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage()));
-                      //  });
+                      print(email.text.split("@")[1]);
+                      createAccount(email.text, pass.text).then((value) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LanguageSelectorPage()));
+                      });
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
@@ -108,9 +142,14 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()));
+                  },
                   child: const Text(
-                    'Forgot Password?',
+                    'Login Instead?',
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
